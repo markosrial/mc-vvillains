@@ -14,16 +14,24 @@ import {
 } from '@chakra-ui/react';
 import {AutoComplete, AutoCompleteInput, AutoCompleteItem, AutoCompleteList} from "@choc-ui/chakra-autocomplete";
 import marvel from '../assets/marvel.svg';
-import Rino from '../assets/Rhino.jpg'
+import {
+    ExpertGameBuilder,
+    gameImageSelector,
+    GamesEnum,
+    GamesModeEnum,
+    generateGame,
+    NormalGameBuilder
+} from '../model/Game';
+import {useState} from 'react';
 
-const villains = [
-    "Rino",
-    "Klaw",
-    "Ultron",
-    "Fauces Negras",
-];
+const games = Object.values(GamesEnum);
 
-const NewGame = () => {
+const NewGamePage = () => {
+
+    const [game, setGame] = useState(GamesEnum.RHINO);
+    const [mode, setMode] = useState();
+    const [numPlayers, setNumPlayers] = useState(1);
+
     return (
         <Flex
             minH={'100vh'}
@@ -43,19 +51,19 @@ const NewGame = () => {
                     boxShadow={'lg'}
                     p={8}>
                     <Stack spacing={4}>
-                        <Image w={'2xs'} rounded={'lg'} src={Rino}/>
+                        <Image w={'md'} rounded={'lg'} src={gameImageSelector(game)}/>
                         <FormControl >
-                            <FormLabel>Villano</FormLabel>
-                            <AutoComplete openOnFocus suggestWhenEmpty={true}>
-                                <AutoCompleteInput variant="outline" />
+                            <FormLabel>Escenario</FormLabel>
+                            <AutoComplete openOnFocus suggestWhenEmpty={true} value={game} onChange={value => setGame(value)} defaultValue={game}>
+                                <AutoCompleteInput variant="outline"/>
                                 <AutoCompleteList>
-                                    {villains.map((villain, cid) => (
+                                    {games.map((game, cid) => (
                                         <AutoCompleteItem
                                             key={`option-${cid}`}
-                                            value={villain}
+                                            value={game}
                                             textTransform="capitalize"
                                         >
-                                            {villain}
+                                            {game}
                                         </AutoCompleteItem>
                                     ))}
                                 </AutoCompleteList>
@@ -63,14 +71,14 @@ const NewGame = () => {
                         </FormControl>
                         <FormControl id="mode">
                             <FormLabel>Modo</FormLabel>
-                            <Select variant='outline'>
-                                <option value="normal">Normal</option>
-                                <option value="expert">Experto</option>
+                            <Select variant='outline' value={mode} onChange={e => setMode(e.target.value)}>
+                                <option value={GamesModeEnum.NORMAL}>{GamesModeEnum.NORMAL}</option>
+                                <option value={GamesModeEnum.EXPERT}>{GamesModeEnum.EXPERT}</option>
                             </Select>
                         </FormControl>
                         <FormControl id="players">
                             <FormLabel>Núm. jugadores</FormLabel>
-                            <Select variant='outline'>
+                            <Select variant='outline' value={numPlayers} onChange={e => setNumPlayers(Number(e.target.value))}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -82,8 +90,9 @@ const NewGame = () => {
                             <Box/>
                             <Button
                                 bg={'red.400'} color={'white'}
-                                _hover={{bg: 'red.500',
-                                }}>
+                                _hover={{bg: 'red.500',}}
+                                _active={{bg: 'red.700',}}
+                                onClick={() => console.log(generateGame(game, mode, numPlayers))}>
                                 Empezar
                             </Button>
                         </Stack>
@@ -94,4 +103,4 @@ const NewGame = () => {
     );
 }
 
-export default NewGame;
+export default NewGamePage;
