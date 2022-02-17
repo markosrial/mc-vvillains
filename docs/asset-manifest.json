@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mc-vvillains/static/css/main.073c9b0a.css",
-    "main.js": "/mc-vvillains/static/js/main.fc2e97ad.js",
+    "main.js": "/mc-vvillains/static/js/main.ae73a1de.js",
     "static/js/787.57f6afcf.chunk.js": "/mc-vvillains/static/js/787.57f6afcf.chunk.js",
     "static/media/Loki.jpg": "/mc-vvillains/static/media/Loki.203f4a4fb5d8895c3424.jpg",
     "static/media/Thanos.jpg": "/mc-vvillains/static/media/Thanos.23d2be2f1e40495e61b0.jpg",
@@ -14,11 +14,11 @@
     "static/media/marvel.svg": "/mc-vvillains/static/media/marvel.f64c057bbe349be7d601d4046d296c6c.svg",
     "index.html": "/mc-vvillains/index.html",
     "main.073c9b0a.css.map": "/mc-vvillains/static/css/main.073c9b0a.css.map",
-    "main.fc2e97ad.js.map": "/mc-vvillains/static/js/main.fc2e97ad.js.map",
+    "main.ae73a1de.js.map": "/mc-vvillains/static/js/main.ae73a1de.js.map",
     "787.57f6afcf.chunk.js.map": "/mc-vvillains/static/js/787.57f6afcf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.fc2e97ad.js"
+    "static/js/main.ae73a1de.js"
   ]
 }

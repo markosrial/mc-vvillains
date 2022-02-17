@@ -8,7 +8,7 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 const App = () => {
 
   return (
-      <BrowserRouter>
+      <BrowserRouter basename="/mc-vvillains">
           <Switch>
               <Route path="/home"><NewGamePage/></Route>
               <Route path="/game"><GamePage/></Route>
