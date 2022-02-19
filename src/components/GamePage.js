@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux';
 import currentGame from '../model/store/currentGame';
 import VillainZone from './VillainZone';
-import {Box, Flex, Grid, GridItem, Stack, useColorModeValue} from '@chakra-ui/react';
+import {Box, Flex, Stack, useColorModeValue} from '@chakra-ui/react';
 import EnvironmentZone from './EnvironmentZone';
 
 const GamePage = () => {
@@ -27,11 +27,11 @@ const GamePage = () => {
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={2} px={5} width={'full'}>
                 <Box bg={bgColorContent} rounded={'lg'}
                      boxShadow={'lg'}>
-                    <Grid rounded={'md'} >
-                        <GridItem><VillainZone zone={1} villain={villain1} scheme={scheme1}/></GridItem>
-                        { villain2 && <GridItem><VillainZone zone={2} villain={villain2} scheme={scheme2}/></GridItem>}
-                        { environment1 && <GridItem><EnvironmentZone zone={1} environment={environment1}/></GridItem>}
-                    </Grid>
+                    <Box rounded={'md'} >
+                        <Box><VillainZone zone={1} villain={villain1} scheme={scheme1}/></Box>
+                        { villain2 && <Box><VillainZone zone={2} villain={villain2} scheme={scheme2}/></Box>}
+                        { environment1 && <Box><EnvironmentZone zone={1} environment={environment1}/></Box>}
+                    </Box>
                 </Box>
             </Stack>
         </Flex>
