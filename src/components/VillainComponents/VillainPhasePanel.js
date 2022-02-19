@@ -99,7 +99,7 @@ const VillainPhasePanel = ({z, vp}) => {
                     <Divider mt={2}/>
                     <Box spacing={2} pt={1}>
                         {vp.extensions.map((ext, i) => (
-                            <Tag size={'m'} key={i} py={1} px={2} borderRadius='full'
+                            <Tag size={'m'} key={i} py={1} px={2} m={1} borderRadius='full'
                                  variant='solid' colorScheme='blue'>
                                 <TagLabel>{extensionContent(ext)}</TagLabel>
                                 <TagCloseButton onClick={() => removeExtension(ext)}/>
