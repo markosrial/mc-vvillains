@@ -97,7 +97,7 @@ const VillainPhasePanel = ({z, vp}) => {
             {vp.extensions.length > 0 &&
                 <Fragment>
                     <Divider mt={2}/>
-                    <HStack spacing={2} pt={1}>
+                    <Box spacing={2} pt={1}>
                         {vp.extensions.map((ext, i) => (
                             <Tag size={'m'} key={i} py={1} px={2} borderRadius='full'
                                  variant='solid' colorScheme='blue'>
@@ -105,7 +105,7 @@ const VillainPhasePanel = ({z, vp}) => {
                                 <TagCloseButton onClick={() => removeExtension(ext)}/>
                             </Tag>
                         ))}
-                    </HStack>
+                    </Box>
                 </Fragment>}
         </Box>
     );
