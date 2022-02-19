@@ -6,18 +6,21 @@ import {
     Grid,
     GridItem,
     HStack,
-    IconButton,
     Image,
     Progress,
+    Tag,
+    TagCloseButton,
+    TagLabel,
+    Text,
     VStack
 } from '@chakra-ui/react';
-import {VillainState} from '../../model/Villains';
-import {GiUpgrade} from 'react-icons/gi';
+import {VillainExtensionEnum, VillainState} from '../../model/Villains';
 import Hit from './Hit';
 import Heal from './Heal';
 import {useDispatch} from 'react-redux';
 import currentGame from '../../model/store/currentGame';
 import {Fragment} from 'react';
+import AddExtension from './AddExtension';
 
 const hpColor = (percentage) => {
     if (percentage > 0.5) {
@@ -29,6 +32,16 @@ const hpColor = (percentage) => {
     }
 }
 
+const extensionContent = (extension) => {
+
+    switch (extension.type) {
+        case VillainExtensionEnum.MAX_HP:
+            return (<Text> +{extension.quantity} HP</Text>);
+        default:
+            return null;
+    }
+
+}
 
 //TODO posible mejora -> traspasar aumentos de un villainID a otro
 const VillainPhasePanel = ({z, vp}) => {
@@ -44,6 +57,14 @@ const VillainPhasePanel = ({z, vp}) => {
 
     const heal = num => {
         dispatch(currentGame.actions.healVillain(z,vp.id,num));
+    }
+
+    const addMaxHPExtension = num => {
+        dispatch(currentGame.actions.addVillainMaxHPExtension(z,vp.id,num));
+    }
+
+    const removeExtension = extension => {
+        dispatch(currentGame.actions.removeVillainExtension(z,vp.id,extension));
     }
 
     if (!vp) {
@@ -69,18 +90,23 @@ const VillainPhasePanel = ({z, vp}) => {
                         <Heal action={heal}/>
                     </ButtonGroup>
                     <ButtonGroup>
-                        <IconButton icon={<GiUpgrade fontSize={'1.5rem'}/>}/>
+                        <AddExtension action={addMaxHPExtension}/>
                     </ButtonGroup>
                 </GridItem>
             </Grid>
-            {vp.extensions &&
+            {vp.extensions.length > 0 &&
                 <Fragment>
                     <Divider mt={2}/>
-                    <Box>
-                        hi
-                    </Box>
+                    <HStack spacing={2} pt={1}>
+                        {vp.extensions.map((ext, i) => (
+                            <Tag size={'m'} key={i} py={1} px={2} borderRadius='full'
+                                 variant='solid' colorScheme='blue'>
+                                <TagLabel>{extensionContent(ext)}</TagLabel>
+                                <TagCloseButton onClick={() => removeExtension(ext)}/>
+                            </Tag>
+                        ))}
+                    </HStack>
                 </Fragment>}
-
         </Box>
     );
 

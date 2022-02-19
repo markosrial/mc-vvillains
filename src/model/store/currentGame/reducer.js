@@ -1,11 +1,17 @@
 import {combineReducers} from 'redux';
 import {
+    ADD_SCHEME_EXTENSION,
+    ADD_VILLAIN_MAX_HP_EXTENSION,
     byZone,
     HEAL_VILLAIN,
     HIT_VILLAIN,
     INIT_ENVIRONMENT_ZONE,
-    INIT_VILLAIN_ZONE, MACHINATE_SCHEME,
-    START_VILLAIN_PHASE, THWART_SCHEME
+    INIT_VILLAIN_ZONE,
+    MACHINATE_SCHEME,
+    REMOVE_SCHEME_EXTENSION,
+    REMOVE_VILLAIN_EXTENSION,
+    START_VILLAIN_PHASE,
+    THWART_SCHEME
 } from './actionTypes';
 
 const initialState = {
@@ -24,6 +30,10 @@ const villainByZone = (zone, initialState) => (state = initialState, action) => 
             return state.map(v => v.id === action.villainID ? v.hit(action.quantity) : v);
         case byZone(HEAL_VILLAIN, zone):
             return state.map(v => v.id === action.villainID ? v.heal(action.quantity) : v);
+        case byZone(ADD_VILLAIN_MAX_HP_EXTENSION, zone):
+            return state.map(v => v.id === action.villainID ? v.addExtension(action.extension) : v);
+        case byZone(REMOVE_VILLAIN_EXTENSION, zone):
+            return state.map(v => v.id === action.villainID ? v.removeExtension(action.extension) : v);
         default:
             return state;
     }
@@ -39,6 +49,10 @@ const schemeByZone = (zone, initialState) => (state = initialState, action) => {
             return state.map(s => s.id === action.schemeID ? s.removeThreat(action.quantity) : s);
         case byZone(MACHINATE_SCHEME, zone):
             return state.map(s => s.id === action.schemeID ? s.addThreat(action.quantity) : s);
+        case byZone(ADD_SCHEME_EXTENSION, zone):
+            return state.map(s => s.id === action.schemeID ? s.addExtension(action.extension) : s);
+        case byZone(REMOVE_SCHEME_EXTENSION, zone):
+            return state.map(s => s.id === action.schemeID ? s.removeExtension(action.extension) : s);
         default:
             return state;
     }

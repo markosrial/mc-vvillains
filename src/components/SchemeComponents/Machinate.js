@@ -38,7 +38,7 @@ const Machinate = ({action}) => {
                         <PopoverBody>
                             <Box display={'inline-flex'}>
                                 <Box>
-                                    <NumberInput value={scheme} min={0} onChange={e => setScheme(Number(e))} size='sm' maxW={20}>
+                                    <NumberInput value={scheme} min={0} onChange={e => setScheme(Number(e))} size='md' maxW={20}>
                                         <NumberInputField />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
@@ -46,7 +46,7 @@ const Machinate = ({action}) => {
                                         </NumberInputStepper>
                                     </NumberInput>
                                 </Box>
-                                <IconButton ml={1} size={'sm'} icon={<FiCheck fontSize={'1.5rem'}/>}
+                                <IconButton ml={1} size={'md'} icon={<FiCheck fontSize={'1.5rem'}/>}
                                             onClick={() => {onClose(); runMachinate();}}/>
                             </Box>
                         </PopoverBody>

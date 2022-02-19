@@ -1,7 +1,12 @@
 import {
     Box,
-    IconButton, NumberDecrementStepper, NumberIncrementStepper,
-    NumberInput, NumberInputField, NumberInputStepper, Popover,
+    IconButton,
+    NumberDecrementStepper,
+    NumberIncrementStepper,
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    Popover,
     PopoverArrow,
     PopoverBody,
     PopoverContent,
@@ -33,7 +38,7 @@ const Machinate = ({action}) => {
                         <PopoverBody>
                             <Box display={'inline-flex'}>
                                 <Box>
-                                    <NumberInput value={thwart} min={0} onChange={e => setThwart(Number(e))} size='sm' maxW={20}>
+                                    <NumberInput value={thwart} min={0} onChange={e => setThwart(Number(e))} size='md' maxW={20}>
                                         <NumberInputField />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
@@ -41,7 +46,7 @@ const Machinate = ({action}) => {
                                         </NumberInputStepper>
                                     </NumberInput>
                                 </Box>
-                                <IconButton ml={1} size={'sm'} icon={<FiCheck fontSize={'1.5rem'}/>}
+                                <IconButton ml={1} size={'md'} icon={<FiCheck fontSize={'1.5rem'}/>}
                                             onClick={() => {onClose(); runThwart();}}/>
                             </Box>
                         </PopoverBody>

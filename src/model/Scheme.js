@@ -3,6 +3,11 @@ export const SchemeState = {
     COMPLETED: 'Completado',
 }
 
+export const SchemeExtensionEnum = {
+    MAX_THR: 'Amenaza (máx)',
+    EXTRA_PHASE_THR: 'Amenaza × fase'
+}
+
 const SchemePhase = {
     PHASE_1: 1,
     PHASE_2: 2,
@@ -35,6 +40,7 @@ const baseScheme = (id: SchemeID, phase: SchemePhase,
         threat: initialThreat,
         maxThreat,
         phaseIncrement,
+        extensions: [],
         addThreat: function (points: Number) {
             let nextThreat = this.threat + points;
             let state = SchemeState.ACTIVE;
@@ -46,7 +52,10 @@ const baseScheme = (id: SchemeID, phase: SchemePhase,
                 nextThreat = 0;
             }
 
-            return {...this, state, threat: nextThreat};
+            this.state = state;
+            this.threat = nextThreat;
+
+            return {...this};
         },
         removeThreat: function (points: Number) {
             return this.addThreat(-points)
@@ -55,10 +64,33 @@ const baseScheme = (id: SchemeID, phase: SchemePhase,
             return this.addThreat(this.getPhaseIncrement())
         },
         getMaxThreat: function () {
-            return this.maxThreat; /*TODO +aumentos*/
+            return this.extensions.reduce(
+                (prev, current) => prev + (current.type === SchemeExtensionEnum.MAX_THR ? current.quantity : 0),
+                this.maxThreat
+            );
         },
         getPhaseIncrement: function () {
-            return this.phaseIncrement; /*TODO +aumentos*/
+            return this.extensions.reduce(
+                (prev, current) => prev + (current.type === SchemeExtensionEnum.EXTRA_PHASE_THR ? current.quantity : 0),
+                this.phaseIncrement
+            );
+        },
+        addExtension: function (extension) {
+            this.extensions.push(extension);
+            return {...this}
+        },
+        removeExtension: function (extension) {
+            this.extensions = this.extensions.filter(ext => ext !== extension);
+
+            switch (extension.type) {
+                case SchemeExtensionEnum.MAX_THR:
+                    this.addThreat(0);
+                    break;
+                default:
+                    break;
+            }
+
+            return {...this}
         }
     });
 

@@ -5,6 +5,10 @@ export const VillainState = {
     DEFEATED: 'Derrotado',
 }
 
+export const VillainExtensionEnum = {
+    MAX_HP: 'HP (máx)'
+}
+
 const VillainPhase = {
     PHASE_1: 1,
     PHASE_2: 2,
@@ -48,6 +52,7 @@ const baseVillain = (id: VillainID, phase: VillainPhase, maxHP:Number, image = n
         hp: maxHP,
         maxHP,
         image,
+        extensions: [],
         addHP: function (points: Number) {
             let health = this.hp + points;
             let state = VillainState.ACTIVE;
@@ -59,14 +64,47 @@ const baseVillain = (id: VillainID, phase: VillainPhase, maxHP:Number, image = n
                 health = 0;
             }
 
-            return {...this, state, hp: health};
+            this.state = state;
+            this.hp = health;
+
+            return {...this};
         },
         heal: function (points: Number) { return this.addHP(points); },
         hit: function (points: Number) {
             return this.addHP(-points)
         },
         getMaxHP: function () {
-            return this.maxHP; /*TODO +aumentos*/
+            return this.extensions.reduce(
+                (prev, current) => prev + (current.type === VillainExtensionEnum.MAX_HP ? current.quantity : 0),
+                this.maxHP
+            );
+        },
+        addExtension: function (extension) {
+
+            this.extensions.push(extension);
+
+            switch (extension.type) {
+                case VillainExtensionEnum.MAX_HP:
+                    this.addHP(extension.quantity);
+                    break;
+                default:
+                    break;
+            }
+
+            return {...this}
+        },
+        removeExtension: function (extension) {
+            this.extensions = this.extensions.filter(ext => ext !== extension);
+
+            switch (extension.type) {
+                case VillainExtensionEnum.MAX_HP:
+                    this.hit(extension.quantity);
+                    break;
+                default:
+                    break;
+            }
+
+            return {...this}
         }
     });
 

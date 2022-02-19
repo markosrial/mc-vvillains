@@ -1,5 +1,4 @@
 import {Box, Tab, TabList, TabPanel, TabPanels, Tabs, Text, useColorModeValue} from '@chakra-ui/react';
-import VillainPhasePanel from './VillainComponents/VillainPhasePanel';
 import SchemePhasePanel from './SchemeComponents/SchemePhasePanel';
 
 const SchemePhases = ({zone, schemePhases}) => {

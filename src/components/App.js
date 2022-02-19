@@ -1,9 +1,7 @@
 import './App.css';
 import NewGamePage from './NewGamePage';
 import GamePage from './GamePage';
-import {BrowserRouter, Switch, Route } from 'react-router-dom';
-import {createStore} from 'redux';
-import reducer from '../model/store/currentGame/reducer';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 // TODO -> 1ro -> info palabras clave, 2do -> logs
 const App = () => {
