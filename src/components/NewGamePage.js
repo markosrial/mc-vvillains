@@ -14,15 +14,11 @@ import {
 } from '@chakra-ui/react';
 import {AutoComplete, AutoCompleteInput, AutoCompleteItem, AutoCompleteList} from "@choc-ui/chakra-autocomplete";
 import marvel from '../assets/marvel.svg';
-import {
-    ExpertGameBuilder,
-    gameImageSelector,
-    GamesEnum,
-    GamesModeEnum,
-    generateGame,
-    NormalGameBuilder
-} from '../model/Game';
+import {gameImageSelector, GamesEnum, GamesModeEnum, generateGame} from '../model/Game';
 import {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import currentGame from '../model/store/currentGame';
+import {useHistory} from 'react-router-dom';
 
 const games = Object.values(GamesEnum);
 
@@ -32,13 +28,27 @@ const NewGamePage = () => {
     const [mode, setMode] = useState();
     const [numPlayers, setNumPlayers] = useState(1);
 
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const generateNewGame = () => {
+
+        const {villainZone1, villainZone2, environmentZone1} = generateGame(game, mode, numPlayers);
+
+        dispatch(currentGame.actions.initVillainZone( 1, villainZone1));
+        dispatch(currentGame.actions.initVillainZone(2, villainZone2));
+        dispatch(currentGame.actions.initEnvironmentZone(1, environmentZone1));
+
+        history.push('/game');
+    }
+
     return (
         <Flex
             minH={'100vh'}
             align={'center'}
             justify={'center'}
             bg={useColorModeValue('gray.50', 'gray.800')}>
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={1} px={5}>
                 <Stack align={'center'}>
                     <HStack><Image width={'9rem'} src={marvel}/><Text fontSize="x-large" fontWeight="bold" as="i" >CHAMPIONS</Text></HStack>
                     <Text fontSize={'xl'} fontWeight="bold" fontFamily={'courier'} color={'gray.700'}>
@@ -92,7 +102,7 @@ const NewGamePage = () => {
                                 bg={'red.400'} color={'white'}
                                 _hover={{bg: 'red.500',}}
                                 _active={{bg: 'red.700',}}
-                                onClick={() => console.log(generateGame(game, mode, numPlayers))}>
+                                onClick={generateNewGame}>
                                 Empezar
                             </Button>
                         </Stack>

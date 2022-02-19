@@ -4,12 +4,20 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import {ChakraProvider} from '@chakra-ui/react';
+import configureStore from './model/store';
+import {Provider} from 'react-redux';
+import '@fontsource/roboto/700.css'
+import 'focus-visible/dist/focus-visible';
+
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
+      <Provider store={store}>
+          <ChakraProvider>
+            <App />
+          </ChakraProvider>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mc-vvillains/static/css/main.073c9b0a.css",
-    "main.js": "/mc-vvillains/static/js/main.ae73a1de.js",
+    "main.css": "/mc-vvillains/static/css/main.46546a0f.css",
+    "main.js": "/mc-vvillains/static/js/main.4112695d.js",
     "static/js/787.57f6afcf.chunk.js": "/mc-vvillains/static/js/787.57f6afcf.chunk.js",
     "static/media/Loki.jpg": "/mc-vvillains/static/media/Loki.203f4a4fb5d8895c3424.jpg",
     "static/media/Thanos.jpg": "/mc-vvillains/static/media/Thanos.23d2be2f1e40495e61b0.jpg",
@@ -11,14 +11,31 @@
     "static/media/Rhino.jpg": "/mc-vvillains/static/media/Rhino.31df90b0c68ba3c363b3.jpg",
     "static/media/TowerDefense.jpg": "/mc-vvillains/static/media/TowerDefense.d1fbc8ef284c57742366.jpg",
     "static/media/Klaw.jpg": "/mc-vvillains/static/media/Klaw.b6a884ff1bae2278650c.jpg",
+    "static/media/LokiPhase.jpeg": "/mc-vvillains/static/media/LokiPhase.380dfd6b9c6de2805e9c.jpeg",
+    "static/media/HelaPhase.jpeg": "/mc-vvillains/static/media/HelaPhase.c544f039cdf892be3f08.jpeg",
+    "static/media/ThanosPhase.jpeg": "/mc-vvillains/static/media/ThanosPhase.18b07b5fbf3d38c83638.jpeg",
+    "static/media/EbonyMawPhase.jpeg": "/mc-vvillains/static/media/EbonyMawPhase.bcc3c553f02ec7454a16.jpeg",
+    "static/media/UltronPhase.jpeg": "/mc-vvillains/static/media/UltronPhase.9efec306af21675fc059.jpeg",
+    "static/media/CorvusPhase.jpeg": "/mc-vvillains/static/media/CorvusPhase.1927ee02dfeb97325a93.jpeg",
+    "static/media/ProximaPhase.jpeg": "/mc-vvillains/static/media/ProximaPhase.66c6fa6753d0547c3f22.jpeg",
+    "static/media/RhinoPhase.jpeg": "/mc-vvillains/static/media/RhinoPhase.b3f1e96414af35bd40bc.jpeg",
+    "static/media/roboto-all-700-normal.woff": "/mc-vvillains/static/media/roboto-all-700-normal.ef6d1d09b20b877fee4e.woff",
+    "static/media/KlawPhase.jpeg": "/mc-vvillains/static/media/KlawPhase.70a45d548bf288a4e750.jpeg",
+    "static/media/roboto-latin-700-normal.woff2": "/mc-vvillains/static/media/roboto-latin-700-normal.0682ca7f74351d42bf73.woff2",
+    "static/media/roboto-cyrillic-ext-700-normal.woff2": "/mc-vvillains/static/media/roboto-cyrillic-ext-700-normal.b816cda3107bb21c87e1.woff2",
+    "static/media/roboto-latin-ext-700-normal.woff2": "/mc-vvillains/static/media/roboto-latin-ext-700-normal.bcf37d666ce10b3556cd.woff2",
+    "static/media/roboto-cyrillic-700-normal.woff2": "/mc-vvillains/static/media/roboto-cyrillic-700-normal.0334efc0de1012200889.woff2",
+    "static/media/roboto-greek-700-normal.woff2": "/mc-vvillains/static/media/roboto-greek-700-normal.3292e831b18d0c23d609.woff2",
+    "static/media/roboto-vietnamese-700-normal.woff2": "/mc-vvillains/static/media/roboto-vietnamese-700-normal.3096f18acebc3f07020d.woff2",
+    "static/media/roboto-greek-ext-700-normal.woff2": "/mc-vvillains/static/media/roboto-greek-ext-700-normal.9674bc0ae12c2551d9d1.woff2",
     "static/media/marvel.svg": "/mc-vvillains/static/media/marvel.f64c057bbe349be7d601d4046d296c6c.svg",
     "index.html": "/mc-vvillains/index.html",
-    "main.073c9b0a.css.map": "/mc-vvillains/static/css/main.073c9b0a.css.map",
-    "main.ae73a1de.js.map": "/mc-vvillains/static/js/main.ae73a1de.js.map",
+    "main.46546a0f.css.map": "/mc-vvillains/static/css/main.46546a0f.css.map",
+    "main.4112695d.js.map": "/mc-vvillains/static/js/main.4112695d.js.map",
     "787.57f6afcf.chunk.js.map": "/mc-vvillains/static/js/787.57f6afcf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.ae73a1de.js"
+    "static/css/main.46546a0f.css",
+    "static/js/main.4112695d.js"
   ]
 }
